@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food-Plua</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="img/logooo-Plua.png" class="active" >
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#Comida">Comida</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contactos">Contactos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <h1>🍔Bienvenidos al Mundo Food-Plua🍟</h1>
+            <p>El mejoir sabor, claidad y tradicion en cada bocado.</p>
+        </section>
+
+        <section class="products-section" id="productos">
+            <h2>Nuestros especial</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="img/papa-loca.jpg" alt="papa-loca" />
+                    <h3>Papa loca</h3>
+                    <p>Papas, salchicha ahumada, queso, tocino, carne, pollo, maduro + cola.</p>
+                    <span class="precio">$5.00</span>
+                    <button class="btn-agregar"data-precio="5.00">Agregar</button>
+                </div>
+                <div class="product-card">
+                    <img src="img/papi -bross.jpg" alt="Papi bross" />
+                    <h3>Papi bross</h3>
+                    <p>Papas, pollo brosther, queso, salchicha, ensalda + cola.</p>
+                    <span class="precio">$3.00</span>
+                    <button class="btn-agregar"data-precio="3.00"> Agregar </button>
+                </div>
+                <div class="product-card">
+                    <img src="img/mollejitas.jpg" alt="Producto 3" />
+                    <h3>Mollejitas Big</h3>
+                    <p>Una brocheta de mollejas, papas chaucha, tocino, mote choclo,madira frito + cola.  </p>
+                    <span class="precio">$2.50</span>
+                    <button class="btn-agregar"data-precio="2.50">Agregar</button>
+                </div>
+                <div class="product-card">
+                    <img src="img/alitasbbq.png" alt="Producto 4" />
+                    <h3>Alistas BBQ</h3>
+                    <p>Alitas de pollo, papas, aderesos, ensalada + cola.</p>
+                    <span>$4.00</span>
+                    <button class="btn-agregar"data-precio="4.00">Agregar</button>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <div class="total-compra">
+        <h2>total: $<span id= "total" >0.00</span></h2>
+    </div>
+       <!-- BOTÓN PAGAR -->
+     <div class="pago">
+       <button id="btn-pagar">Pagar</button>
+
+       <div id="opciones-pago" style="display:none;">
+             <p>Seleccione método de pago:</p>
+             <button class="btn-metodo" onclick="pagar('Transferencia')">Transferencia</button>
+             <button class="btn-metodo" onclick="pagar('Efectivo')">Efectivo</button>
+       </div>
+    </div>
+
+
+    <footer id="contactos">
+        <p>Contacto: food-Plua@ouclet.com | Tel: +593 96 879 5567</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/SvicPgue" target="_blank" rel="noopener noreferrer">Facebook</a> |
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a> |
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>|
+            <a href="https://wa.me/593968795567" target="_blank" >WhatsApp</a>  
+        </div>
+        <p>&copy; 2026 Food-Plua. Todos los derechos reservados.</p>
+    </footer>
+    <script>
+     let total = 0;
+
+     const botones = document.querySelectorAll(".btn-agregar");
+     const totalSpan = document.getElementById("total");
+
+     botones.forEach(boton => {
+         boton.addEventListener("click", () => {
+              const precio = parseFloat(boton.dataset.precio);
+             total += precio;
+             totalSpan.textContent = total.toFixed(2);
+         });
+     });
+     const btnPagar = document.getElementById("btn-pagar");
+     const opcionesPago = document.getElementById("opciones-pago");
+
+     btnPagar.addEventListener("click", () => {
+         opcionesPago.style.display = "block";
+     });
+
+     function pagar(metodo) {
+          alert("Pago seleccionado: " + metodo + 
+          "\nTotal a pagar: $" + total.toFixed(2));
+    }
+
+     </script>
+    <script>
+     let index = 0;
+     const slides = document.querySelectorAll(".slides img");
+
+     function cambiarImagen() {
+         slides.forEach(img => img.classList.remove("active"));
+         slides[index].classList.add("active");
+
+         index = (index + 1) % slides.length;
+}
+
+setInterval(cambiarImagen, 3000);
+</script>
+
+</body>
+</html> 
